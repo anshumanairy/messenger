@@ -180,76 +180,71 @@ const Register = (props) => {
   };
 
   return (
-    <div className="dFA fdC">
-      <img src="/assets/images/logo.svg" />
-      <form onSubmit={handleLoginSubmit}>
-        <LoginWrapper className="dF fdC">
-          <Typography className="taC">SIGN UP</Typography>
-          <Typography className="taC" type="heading">
-            Create an account to continue
-          </Typography>
+    <form onSubmit={handleLoginSubmit}>
+      <LoginWrapper className="dF fdC">
+        <Typography className="taC">SIGN UP</Typography>
+        <Typography className="taC" type="heading">
+          Create an account to continue
+        </Typography>
 
-          <FieldsWrapper className="dF fdC">
-            {fieldsData?.map((field, index) => {
-              return (
-                <InputFieldWrapper className="dF fdC" key={index}>
-                  <div className="pR">
-                    <div className="dF fdC">
-                      <input
-                        name={field?.name}
-                        onChange={(event) => handleFieldChange(event, index)}
-                        type={
-                          field?.type === "password"
-                            ? registerData?.showPassword
-                              ? "text"
-                              : field?.type
+        <FieldsWrapper className="dF fdC">
+          {fieldsData?.map((field, index) => {
+            return (
+              <InputFieldWrapper className="dF fdC" key={index}>
+                <div className="pR">
+                  <div className="dF fdC">
+                    <input
+                      name={field?.name}
+                      onChange={(event) => handleFieldChange(event, index)}
+                      type={
+                        field?.type === "password"
+                          ? registerData?.showPassword
+                            ? "text"
                             : field?.type
-                        }
-                        placeholder={field?.placeholder}
-                      />
-                      {field?.errorData?.show && (
-                        <label className="error">
-                          {field?.errorData?.errorMessage}
-                        </label>
-                      )}
-                    </div>
-                    {field?.type === "password" && (
-                      <>
-                        <img
-                          className="show-pasword pA cP"
-                          src="/assets/images/eye.svg"
-                          height="20"
-                          width="20"
-                          onClick={() =>
-                            setRegisterData({
-                              ...registerData,
-                              showPassword: !registerData?.showPassword,
-                            })
-                          }
-                        />
-                        {registerData?.showPassword && (
-                          <span className="cross" />
-                        )}
-                      </>
+                          : field?.type
+                      }
+                      placeholder={field?.placeholder}
+                    />
+                    {field?.errorData?.show && (
+                      <label className="error">
+                        {field?.errorData?.errorMessage}
+                      </label>
                     )}
                   </div>
-                </InputFieldWrapper>
-              );
-            })}
-          </FieldsWrapper>
-          <Button btnType="primary" size="md" type="submit">
-            Continue
-          </Button>
-          <Typography
-            type="register-label"
-            className="hU"
-            onClick={() => setBaseState("login")}
-          >
-            Already have an account? <span>Login</span>
-          </Typography>
-        </LoginWrapper>
-      </form>
-    </div>
+                  {field?.type === "password" && (
+                    <>
+                      <img
+                        className="show-pasword pA cP"
+                        src="/assets/images/eye.svg"
+                        height="20"
+                        width="20"
+                        onClick={() =>
+                          setRegisterData({
+                            ...registerData,
+                            showPassword: !registerData?.showPassword,
+                          })
+                        }
+                      />
+                      {registerData?.showPassword && <span className="cross" />}
+                    </>
+                  )}
+                </div>
+              </InputFieldWrapper>
+            );
+          })}
+        </FieldsWrapper>
+        <Button btnType="primary" size="md" type="submit">
+          Continue
+        </Button>
+        <Typography
+          type="register-label"
+          className="hU"
+          onClick={() => setBaseState("login")}
+        >
+          Already have an account? <span>Login</span>
+        </Typography>
+      </LoginWrapper>
+    </form>
   );
 };
 
