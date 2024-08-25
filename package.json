@@ -3,9 +3,19 @@
   "version": "0.1.0",
   "author": "Anshuman Singh Airy",
   "private": true,
+  "dist": "electron-builder",
+  "main": "electron.js",
+  "build": {
+    "appId": "com.example.myapp",
+    "productName": "My Electron App",
+    "directories": {
+      "output": "dist"
+    }
+  },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build"
+    "build": "react-scripts build",
+    "electron": "electron ."
   },
   "dependencies": {
     "@loadable/component": "^5.12.0",
@@ -27,5 +37,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "electron": "^32.0.1",
+    "electron-builder": "^24.13.3",
+    "electron-is-dev": "^3.0.1"
   }
 }
